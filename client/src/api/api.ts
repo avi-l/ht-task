@@ -18,3 +18,15 @@ export const createHouseRecord = async (data: IHouseRecord): Promise<IHouseRecor
     }
   };
   
+  export const fetchHouses = async (offset = 0, limit = 10): Promise<IHouseRecord[]> => {
+    try {
+      const response = await axios.get('/api/fetchHouses', {
+        params: { offset, limit },
+      });
+  
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to fetch houses');
+    }
+  };
