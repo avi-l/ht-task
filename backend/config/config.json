@@ -1,0 +1,10 @@
+{
+    "development": {
+      "username": "qqkxitfu",
+      "password": "",
+      "database": "qqkxitfu",
+      "host": "rajje.db.elephantsql.com",
+      "dialect": "postgres"
+    }
+  }
+  
