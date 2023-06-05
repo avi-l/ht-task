@@ -20,11 +20,11 @@ const HouseDetailView: React.FC = () => {
   }, [id]);
 
   if (!house) {
-    return <div className=''>Loading...</div>;
+    return <div className='text-yellow-500'>Loading...</div>;
   }
 
   return (
-    <div className="text-red-500">
+    <div className='bg-dark text-yellow-500'>
       <h3>House Details</h3>
       <p>Address: {house.address}</p>
       <p>Current Value: {house.currentValue}</p>

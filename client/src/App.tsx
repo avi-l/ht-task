@@ -15,7 +15,7 @@ const App: React.FC = () => {
   const isOpen = useSelector((state: RootState) => state.modal.isOpen);
   return (
     <Router>
-    <div className='d-flex flex-column min-vh-100'>
+    <div className='d-flex flex-column min-vh-100 bg-dark'>
       <TopBar />
       <div className="flex-grow-1">
         <Routes>

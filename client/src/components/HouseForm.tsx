@@ -66,6 +66,7 @@ const HouseForm: React.FC = () => {
   };
 
   return (
+    
     <Container>
       <Row>
         <div className='flex items-center'><h3>Add New House</h3></div>
