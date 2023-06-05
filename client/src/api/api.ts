@@ -10,7 +10,6 @@ export const createHouseRecord = async (data: IHouseRecord): Promise<IHouseRecor
         loanAmount: data.loanAmount,
         risk: data.risk,
       });
-      console.log(response.data); // Handle the response data as needed
       return response.data;
     } catch (error) {
       console.error(error);
@@ -23,7 +22,27 @@ export const createHouseRecord = async (data: IHouseRecord): Promise<IHouseRecor
       const response = await axios.get('/api/fetchHouses', {
         params: { offset, limit },
       });
-  
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to fetch houses');
+    }
+  };
+
+  export const updateHouseById = async (id: number, updatedData: IHouseRecord): Promise<IHouseRecord[]> => {
+    try {
+      const response = await axios.put(`/api/houses/${id}`, updatedData);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to fetch houses');
+    }
+  };
+
+  export const deleteHouseById = async (id: number): Promise<IHouseRecord[]> => {
+    try {
+      const response = await axios.delete(`/api/houses/${id}`);
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);

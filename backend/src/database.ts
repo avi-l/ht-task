@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT, DB_NAME } = process.env || {};
+const { DB_USERNAME, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT } = process.env || {};
 
 const sequelize = new Sequelize({
     database: DB_DATABASE,

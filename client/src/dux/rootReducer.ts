@@ -1,9 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import modalReducer from './modalSlice';
+import {housesReducer, modalReducer} from './reducers';
 
 const rootReducer = combineReducers({
+  houses: housesReducer,
   modal: modalReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;
 export default rootReducer;
+

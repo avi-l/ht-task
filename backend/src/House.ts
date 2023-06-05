@@ -39,7 +39,7 @@ const House = sequelize.define<HouseInstance>('House', {
     allowNull: false,
   },
 }, {
-  tableName: 'qqkxitfu',
+  tableName: process.env.DB_DATABASE,
 });
 
 (async () => {

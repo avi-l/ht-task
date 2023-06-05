@@ -79,7 +79,7 @@ app.put('/api/houses/:id', async (req: Request, res: Response) => {
 app.get('/api/fetchHouses', async (req: Request, res: Response) => {
   try {
     const offset = Number(req.query.offset) || 0; // Get the offset from query parameter, default to 0
-    const limit = Number(req.query.limit) || 10; // Get the limit from query parameter, default to 10
+    const limit = Number(req.query.limit) || 100; // Get the limit from query parameter, default to 10
 
     const houses = await House.findAll({
       offset,
@@ -92,6 +92,25 @@ app.get('/api/fetchHouses', async (req: Request, res: Response) => {
     res.status(500).json({ error: 'Failed to fetch houses' });
   }
 });
+
+app.delete('/api/houses/:id', async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    const house = await House.findByPk(id);
+
+    if (!house) {
+      res.status(404).json({ error: 'House record not found' });
+    } else {
+      await house.destroy();
+
+      res.json({ message: 'House record deleted successfully' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to delete the house record' });
+  }
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

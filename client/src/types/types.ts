@@ -4,12 +4,13 @@ export interface IHouseRecord {
     currentValue?: number;
     loanAmount?: number;
     risk?: number;
+    updatedAt?: string;
   }
 
 export interface HouseCardProps {
     house: IHouseRecord;
   }
-  
+
 export interface HouseListProps {
   houses: IHouseRecord[];
 }
