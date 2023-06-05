@@ -38,8 +38,17 @@ export const createHouseRecord = async (data: IHouseRecord): Promise<IHouseRecor
       throw new Error('Failed to fetch houses');
     }
   };
+  export const fetchHouseById = async (id: number): Promise<IHouseRecord> => {
+    try {
+      const response = await axios.get(`/api/houses/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      throw new Error('Failed to fetch houses');
+    }
+  };
 
-  export const deleteHouseById = async (id: number): Promise<IHouseRecord[]> => {
+  export const deleteHouseById = async (id: number): Promise<{message: string}> => {
     try {
       const response = await axios.delete(`/api/houses/${id}`);
       console.log(response.data);

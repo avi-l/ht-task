@@ -14,7 +14,7 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
     const handleDelete = async () => {
         try {
             setLoading(true)
-            // await deleteHouseById(id)
+            await deleteHouseById(id)
             dispatch({type: 'DELETE_HOUSE', payload: house})
             toast.success('Record Deleted')
         } catch (error) {

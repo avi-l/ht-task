@@ -6,6 +6,7 @@ import isNumeric from 'validator/lib/isNumeric';
 import { useDispatch } from 'react-redux';
 import { Button, Form, Container, Row, Col, Stack, Alert } from 'react-bootstrap';
 import { toggleModalAction } from '../dux/reducers';
+import { useNavigate } from 'react-router-dom';
 
 const HouseForm: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false)
@@ -16,9 +17,11 @@ const HouseForm: React.FC = () => {
     risk: 0,
     loanAmount: 0
   });
+  const navigate = useNavigate();
   const dispatch = useDispatch()
   const handleClose = () => dispatch(toggleModalAction())
 
+  const handleNavigate = () => navigate(`/houses/${newHouseID}`);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target || {};
     let updatedValue = value;
@@ -93,6 +96,7 @@ const HouseForm: React.FC = () => {
             
       { newHouseID > 0 &&  <><hr /><Alert variant='info'>
               Success! Your newly created ID: {newHouseID}
+              <Button disabled={!newHouseID} onClick={handleNavigate}>Take me to the house!</Button>
             </Alert></>}
             <hr />
             <div className="flex justify-end">

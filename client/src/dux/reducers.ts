@@ -9,7 +9,7 @@ export interface ModalState {
 }
 
 const initialHousesState: HousesState = {
-    houses: [],
+    houses: [] as IHouseRecord[],
 };
 
 const initialModalState: ModalState = {
@@ -25,7 +25,7 @@ export const toggleModalAction = () => ({
     type: 'TOGGLE_MODAL',
 });
 
-export const housesReducer = (state: HousesState = initialHousesState, action: { type: string; payload: { id: number | undefined; } | IHouseRecord | IHouseRecord[] }) => {
+export const housesReducer = (state = initialHousesState, action: { type: string, payload: IHouseRecord | IHouseRecord[]; }) => {
     switch (action.type) {
         case 'SET_HOUSES':
             return {
@@ -37,11 +37,12 @@ export const housesReducer = (state: HousesState = initialHousesState, action: {
                 ...state,
                 houses: [...state.houses, action.payload],
             };
-        case 'DELETE_HOUSE':
-            return {
-                ...state,
-                houses: state.houses.filter((house) => house.id !== action.payload?.id),
-            };
+            case 'DELETE_HOUSE':{
+                const deletePayload = Array.isArray(action.payload) ? action.payload[0] : action.payload;
+                return {
+                    ...state,
+                    houses: state.houses.filter((house) => house.id !== deletePayload?.id),
+                };}
         default:
             return state;
     }
