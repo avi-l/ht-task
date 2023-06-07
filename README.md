@@ -7,7 +7,6 @@ Make sure you have the following software installed on your machine:
 
 - Node.js
 - npm (Node Package Manager)
-- PostgreSQL (or any other supported database)
 
 == Installation ==
 
@@ -40,6 +39,7 @@ npm run dev
 6. Navigate to client and start the app
 
 ```
-cd client
+cd ../client
+npm install
 npm run dev
 ```
