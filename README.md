@@ -1,8 +1,9 @@
-= Web App Setup and Run Guide =
+= Sample House Valuation Webapp =
 
 This guide provides step-by-step instructions on how to set up and run the web app locally.
 
 == Prerequisites ==
+
 Make sure you have the following software installed on your machine:
 
 - Node.js
@@ -43,3 +44,5 @@ cd ../client
 npm install
 npm run dev
 ```
+
+Your terminal should have the localhost url for you to put in a browser and start using.. enjoy!
