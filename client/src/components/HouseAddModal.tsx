@@ -6,7 +6,7 @@ import { RootState } from "../dux/rootReducer";
 import HouseAddForm from "./HouseAddForm";
 import { toggleModalAction } from "../dux/reducers";
 
-const AddHouseModal: React.FC = () => {
+const HouseAddModal: React.FC = () => {
   const dispatch = useDispatch();
   const isOpen = useSelector((state: RootState) => state.modal.isOpen);
 
@@ -27,4 +27,4 @@ const AddHouseModal: React.FC = () => {
   );
 };
 
-export default AddHouseModal;
+export default HouseAddModal;
