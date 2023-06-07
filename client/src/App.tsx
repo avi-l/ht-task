@@ -23,7 +23,7 @@ const App: React.FC = () => {
               className="d-flex justify-content-center align-items-center"
             >
               <img
-                src={"/public/under_construction.svg"}
+                src={"/under_construction.svg"}
                 alt="House"
                 className="img-fluid ml-6"
               />
