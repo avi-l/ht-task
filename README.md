@@ -1,5 +1,7 @@
 # Sample House Valuation Webapp
 
+[![Video Title](https://img.youtube.com/vi/4ijx5KaSOXI/0.jpg)](https://www.youtube.com/watch?v=4ijx5KaSOXI)
+
 This guide provides step-by-step instructions on how to set up and run the web app locally.
 
 #### == Prerequisites ==
