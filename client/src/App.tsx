@@ -5,7 +5,7 @@ import "./App.css";
 import TopBar from "./components/TopBar";
 
 import HouseList from "./components/HouseList";
-import AddHouseModal from "./components/AddHouseModal";
+import AddHouseModal from "./components/HouseAddModal";
 import { RootState } from "./dux/rootReducer";
 import HouseDetailView from "./components/HouseDetailView";
 import { Container, Row, Col } from "react-bootstrap";

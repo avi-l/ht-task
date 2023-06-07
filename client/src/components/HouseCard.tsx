@@ -172,17 +172,17 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
         ) : (
           <>
             <div className="flex flex-col">
-              <div className="flex items-center ">
-                <div className="font-semibold">Current Value:</div>
-                <div className="ml-2">${currentValue}</div>
+              <div className="flex items-center">
+                <div className="font-semibold">Value:</div>
+                <div className="ml-auto">${currentValue}</div>
               </div>
-              <div className="flex items-center ">
+              <div className="flex items-center">
                 <div className="font-semibold">Loan Amount:</div>
-                <div className="ml-2">${loanAmount}</div>
+                <div className="ml-auto">${loanAmount}</div>
               </div>
               <div className="flex items-center">
                 <div className="font-semibold">Risk:</div>
-                <div className="ml-2">{risk?.toFixed(4)}</div>
+                <div className="ml-auto">{risk?.toFixed(4)}</div>
               </div>
             </div>
           </>

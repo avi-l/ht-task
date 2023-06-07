@@ -9,6 +9,7 @@ const HouseDetailView: React.FC = () => {
   const { id = "" } = useParams<{ id: string }>();
   const [house, setHouse] = useState<IHouseRecord | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const fetchHouse = async () => {
       try {
@@ -25,7 +26,7 @@ const HouseDetailView: React.FC = () => {
   }, [id]);
 
   return (
-    <div className="flex w-full items-center justify-center bg-dark text-yellow-500">
+    <div className="flex w-full h-full d-flex justify-center items-center bg-dark text-yellow-500">
       {isLoading ? (
         <div className="text-center">
           <Spinner animation="border" variant="warning" />

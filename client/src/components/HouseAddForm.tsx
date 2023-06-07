@@ -17,7 +17,7 @@ import { toggleModalAction } from "../dux/reducers";
 import { useNavigate } from "react-router-dom";
 import { validateNumericInput } from "../utils/utils";
 
-const HouseForm: React.FC = () => {
+const HouseAddForm: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [newHouseID, setNewHouseId] = useState<number>(0);
   const [formValues, setFormValues] = useState<IHouseRecord>({
@@ -67,6 +67,12 @@ const HouseForm: React.FC = () => {
       dispatch({ type: "ADD_HOUSE", payload: newHouse });
       setNewHouseId(newHouse?.id as number);
       toast.success("YAY! Your house data has been saved");
+      setFormValues({
+        address: "",
+        currentValue: 0,
+        loanAmount: 0,
+        risk: 0,
+      });
     } catch (error) {
       console.error(error);
       toast.error("Oops, there was a problem saving this data");
@@ -89,7 +95,7 @@ const HouseForm: React.FC = () => {
               <Form.Group controlId="address">
                 <Form.Label>Address</Form.Label>
                 <Form.Control
-                  disabled={!!newHouseID}
+                  disabled={loading}
                   type="text"
                   name="address"
                   placeholder="Enter an address"
@@ -100,11 +106,15 @@ const HouseForm: React.FC = () => {
               <Form.Group controlId="currentValue">
                 <Form.Label>Current Value</Form.Label>
                 <Form.Control
-                  disabled={!!newHouseID}
+                  disabled={loading}
                   type="text"
                   name="currentValue"
                   placeholder="Enter a value"
-                  value={formValues?.currentValue}
+                  value={
+                    formValues?.currentValue === 0
+                      ? ""
+                      : formValues?.currentValue
+                  }
                   onKeyDown={(e) => validateNumericInput(e)}
                   onChange={handleChange}
                 />
@@ -112,11 +122,13 @@ const HouseForm: React.FC = () => {
               <Form.Group controlId="loanAmount">
                 <Form.Label>Loan Amount</Form.Label>
                 <Form.Control
-                  disabled={!!newHouseID}
+                  disabled={loading}
                   type="text"
                   name="loanAmount"
-                  placeholder="Enter your loan amount"
-                  value={formValues?.loanAmount}
+                  placeholder="Enter loan amount"
+                  value={
+                    formValues?.loanAmount === 0 ? "" : formValues?.loanAmount
+                  }
                   onKeyDown={(e) => validateNumericInput(e)}
                   onChange={handleChange}
                 />
@@ -173,4 +185,4 @@ const HouseForm: React.FC = () => {
     </div>
   );
 };
-export default HouseForm;
+export default HouseAddForm;

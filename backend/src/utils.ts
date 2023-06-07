@@ -18,18 +18,18 @@ export const calculateRisk = (house: IHouseRisk): number => {
 
 export const fetchRandomHousePic = async (): Promise<string> => {
   try {
-    const width = 500; // Desired width for the image
-    const height = 400; // Desired height for the image
+    const width = 500;
+    const height = 400;
 
     const accessKey = process.env.UNSPLASH_KEY;
     const response: AxiosResponse = await axios.get(
       `https://api.unsplash.com/photos/random?query=house&orientation=landscape&client_id=${accessKey}`
     );
     const image = response.data;
-    const imageUrl = image.urls.regular;
-    return `${imageUrl}?w=${width}&h=${height}`;
+    const imageUrl = `${image.urls.raw}&w=${width}&h=${height}`;
+    return imageUrl;
   } catch (error) {
     console.error("Error fetching house picture:", error);
-    return "";
+    return "Error fetching image";
   }
 };
