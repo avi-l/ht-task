@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import axios from "../axiosConfig";
+import axios from "../config/axiosConfig";
 
 import { IHouseRecord } from "../types/types";
 
@@ -70,23 +70,5 @@ export const deleteHouseById = async (
   } catch (error) {
     console.error(error);
     throw new Error("Failed to fetch houses");
-  }
-};
-
-export const fetchRandomHousePic = async (): Promise<string> => {
-  try {
-    const width = 500; // Desired width for the image
-    const height = 400; // Desired height for the image
-
-    const accessKey = "-2OlquUqjgxrcogzMWbca3-Z7uC3TRnT_rhcvdyGoYk";
-    const response: AxiosResponse = await axios.get(
-      `https://api.unsplash.com/photos/random?query=house&orientation=landscape&client_id=${accessKey}`
-    );
-    const image = response.data;
-    const imageUrl = image.urls.regular;
-    return `${imageUrl}?w=${width}&h=${height}`;
-  } catch (error) {
-    console.error("Error fetching house picture:", error);
-    return "";
   }
 };

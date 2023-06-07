@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Button, Card, Form, Spinner, Stack } from "react-bootstrap";
 
 import { toast } from "react-toastify";
-import "./components.css";
 import { deleteHouseById, updateHouseById } from "../api/api";
 import { HouseCardProps, IHouseRecord } from "../types/types";
 import { calculateRisk, validateNumericInput } from "../utils/utils";
@@ -13,13 +12,18 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { address, currentValue, loanAmount, risk = 0, id = 0, image } = house;
+  const {
+    address,
+    currentValue,
+    loanAmount,
+    risk = 0,
+    id = 0,
+    image = "",
+  } = house;
 
   const [loading, setLoading] = useState<boolean>(false);
   const [editing, setEditing] = useState<boolean>(false);
   const [isOnHousePage, setIsOnHousePage] = useState<boolean>(false);
-  const [imgUrl, setImgUrl] = useState("/public/default_house.jpg");
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const [editedValues, setEditedValues] = useState({
     address: address,
@@ -47,7 +51,7 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
         }),
       };
     });
-  }, [editedValues.currentValue, editedValues.loanAmount]);
+  }, [editedValues.currentValue, editedValues.loanAmount, image]);
 
   const handleDelete = async () => {
     try {
@@ -100,30 +104,24 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
     setEditedValues((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleImageLoad = () => {
-    setIsImageLoaded(true);
-  };
-
   return (
     <Card bg="light" className={`text-yellow-600 p-2`}>
       <div className="relative">
-        {!isImageLoaded && (
-          <div className="image-overlay">
-            <Spinner size="sm" />
-          </div>
+        {!editing && (
+          <>
+            <Card.Img
+              onClick={() => {
+                navigate(isOnHousePage ? "/" : `/houses/${id}`);
+              }}
+              variant="top"
+              src={image || "default_house.jpg"}
+              className="object-cover rounded cursor-pointer"
+            />
+            <div className="absolute bottom-2 left-2 right-2 p-2 bg-neutral-700 bg-opacity-50 rounded">
+              <div className="text-white font-bold text-l">{address}</div>
+            </div>
+          </>
         )}
-        <Card.Img
-          onClick={() => {
-            navigate(isOnHousePage ? "/" : `/houses/${id}`);
-          }}
-          variant="top"
-          src={!isImageLoaded || !image ? "/public/default_house.jpg" : image}
-          className="object-cover rounded cursor-pointer "
-          onLoad={handleImageLoad}
-        />
-        <div className="absolute bottom-2 left-2 right-2 p-2 bg-gray-500 bg-opacity-30 rounded">
-          <div className="text-white font-bold text-l">{address}</div>
-        </div>
       </div>
       <Card.Body>
         {editing ? (
@@ -199,7 +197,7 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
                 {loading ? (
                   <div className="pr-1">
                     {" "}
-                    <Spinner animation="border" variant="info" size="sm" />{" "}
+                    <Spinner animation="border" variant="dark" size="sm" />{" "}
                     Saving
                   </div>
                 ) : (
@@ -221,11 +219,7 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
                 {loading ? (
                   <div className="pr-1">
                     {" "}
-                    <Spinner
-                      animation="border"
-                      variant="warning"
-                      size="sm"
-                    />{" "}
+                    <Spinner animation="border" variant="dark" size="sm" />{" "}
                     Deleting
                   </div>
                 ) : (

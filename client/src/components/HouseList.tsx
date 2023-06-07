@@ -35,7 +35,7 @@ const HouseList: React.FC = () => {
         </div>
       ) : (
         <div className="scrollable-container">
-          <div className="scrollable-content d-flex flex-wrap justify-content-end">
+          <div className="scrollable-content d-flex flex-wrap justify-content-center">
             {houses?.map((house) => (
               <div key={house.id} className="col-lg-4 col-md-6 col-sm-12 p-1">
                 <HouseCard house={house} />

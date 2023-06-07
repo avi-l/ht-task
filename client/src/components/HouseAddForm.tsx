@@ -1,8 +1,7 @@
-import { ChangeEvent, FormEvent, useState } from "react";
-import { createHouseRecord, fetchRandomHousePic } from "../api/api";
+import { ChangeEvent, useState } from "react";
+import { createHouseRecord } from "../api/api";
 import { IHouseRecord } from "../types/types";
 import { toast } from "react-toastify";
-import isNumeric from "validator/lib/isNumeric";
 import { useDispatch } from "react-redux";
 import {
   Button,
@@ -59,14 +58,11 @@ const HouseForm: React.FC = () => {
       setLoading(true);
       const { address, currentValue, loanAmount } = formValues;
       if (!address || !currentValue || !loanAmount) return null;
-      const image = await fetchRandomHousePic();
-      console.log("image", image);
       const houseData: IHouseRecord = {
         address,
         currentValue,
         loanAmount,
         risk: 0,
-        image,
       };
 
       const newHouse: IHouseRecord = await createHouseRecord(houseData);

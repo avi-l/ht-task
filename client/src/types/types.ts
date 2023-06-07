@@ -5,7 +5,7 @@ export interface IHouseRecord {
   loanAmount?: number;
   risk?: number;
   updatedAt?: string;
-  image: string;
+  image?: string;
 }
 
 export interface HouseCardProps {

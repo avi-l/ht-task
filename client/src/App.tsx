@@ -25,7 +25,7 @@ const App: React.FC = () => {
               <img
                 src={"/public/under_construction.svg"}
                 alt="House"
-                className="img-fluid"
+                className="img-fluid ml-6"
               />
             </Col>
             <Col className="d-flex flex-column">

@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import House from "./House";
 import cors from "cors";
-import { calculateRisk } from "./utils";
+import { calculateRisk, fetchRandomHousePic } from "./utils";
 const app = express();
 app.use(cors());
 const port = 3000;
@@ -12,8 +12,9 @@ app.use(bodyParser.json());
 // Create a new house record
 app.post("/api/houses", async (req: Request, res: Response) => {
   try {
-    const { address, currentValue, loanAmount, image } = req.body || {};
-    console.log("req", req.body);
+    const { address, currentValue, loanAmount } = req.body || {};
+
+    const image = await fetchRandomHousePic();
     const house = await House.create({
       address,
       currentValue,
