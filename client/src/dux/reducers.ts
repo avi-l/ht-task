@@ -1,12 +1,4 @@
-import { IHouseRecord } from "../types/types";
-
-export interface HousesState {
-  houses: IHouseRecord[];
-}
-
-export interface ModalState {
-  isOpen: boolean;
-}
+import { HousesState, IHouseRecord, ModalState } from "../types/types";
 
 const initialHousesState: HousesState = {
   houses: [] as IHouseRecord[],

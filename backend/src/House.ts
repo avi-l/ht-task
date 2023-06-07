@@ -50,17 +50,4 @@ const House = sequelize.define<HouseInstance>(
   }
 );
 
-(async () => {
-  try {
-    await sequelize.authenticate();
-    console.log("Database connection has been established successfully.");
-
-    // Perform a test query
-    const house = await House.findOne();
-    console.log("First house record:", house?.toJSON());
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
-})();
-
 export default House;

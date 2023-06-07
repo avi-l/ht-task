@@ -12,7 +12,6 @@ export const createHouseRecord = async (
       currentValue: data.currentValue,
       loanAmount: data.loanAmount,
       risk: data.risk,
-      image: data.image,
     });
     return response.data;
   } catch (error) {
@@ -23,7 +22,7 @@ export const createHouseRecord = async (
 
 export const fetchHouses = async (
   offset = 0,
-  limit = 10
+  limit = 100
 ): Promise<IHouseRecord[]> => {
   try {
     const response: AxiosResponse = await axios.get("/api/fetchHouses", {

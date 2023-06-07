@@ -1,7 +1,4 @@
-interface IHouseRisk {
-  currentValue: number;
-  loanAmount: number;
-}
+import { IHouseRisk } from "../types/types";
 
 export const calculateRisk = (house: IHouseRisk): number => {
   const { currentValue, loanAmount } = house;
@@ -23,7 +20,8 @@ export const validateNumericInput = (e: {
     /^[0-9.]$/.test(e.key) || // Numeric characters and decimal point
     e.keyCode === 8 || // Backspace
     e.keyCode === 37 || // Left arrow
-    e.keyCode === 39; // Right arrow
+    e.keyCode === 39 || // Right arrow
+    e.keyCode === 9; // Tab
   if (!isValidInput) {
     e.preventDefault();
   }

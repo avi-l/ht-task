@@ -25,7 +25,6 @@ const HouseForm: React.FC = () => {
     currentValue: 0,
     risk: 0,
     loanAmount: 0,
-    image: "",
   });
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -35,7 +34,6 @@ const HouseForm: React.FC = () => {
       currentValue: 0,
       loanAmount: 0,
       risk: 0,
-      image: "",
     });
     dispatch(toggleModalAction());
   };
@@ -123,11 +121,10 @@ const HouseForm: React.FC = () => {
                   onChange={handleChange}
                 />
               </Form.Group>
-
               {newHouseID > 0 && (
                 <div className="m-1 text-center">
                   <hr />
-                  <Alert variant="warning">
+                  <Alert variant="success">
                     Success! Your newly created ID: {newHouseID}
                     <div className="p-2 flex justify-center items-center">
                       {" "}

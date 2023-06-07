@@ -4,7 +4,6 @@ import { IHouseRecord } from "../types/types";
 import { fetchHouseById } from "../api/api";
 import HouseCard from "./HouseCard";
 import { Spinner } from "react-bootstrap";
-import { toast } from "react-toastify";
 
 const HouseDetailView: React.FC = () => {
   const { id = "" } = useParams<{ id: string }>();

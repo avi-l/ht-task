@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Spinner } from "react-bootstrap";
+import { Spinner } from "react-bootstrap";
 import { fetchHouses } from "../api/api";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
@@ -35,8 +35,8 @@ const HouseList: React.FC = () => {
         </div>
       ) : (
         <div className="scrollable-container">
-          <div className="scrollable-content d-flex flex-wrap justify-content-center">
-            {houses?.map((house) => (
+          <div className="scrollable-content d-flex flex-wrap justify-content-end">
+            {houses?.map((house: IHouseRecord) => (
               <div key={house.id} className="col-lg-4 col-md-6 col-sm-12 p-1">
                 <HouseCard house={house} />
               </div>

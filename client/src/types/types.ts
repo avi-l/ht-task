@@ -15,3 +15,16 @@ export interface HouseCardProps {
 export interface HouseListProps {
   houses: IHouseRecord[];
 }
+
+export interface HousesState {
+  houses: IHouseRecord[];
+}
+
+export interface ModalState {
+  isOpen: boolean;
+}
+
+export interface IHouseRisk {
+  currentValue: number;
+  loanAmount: number;
+}

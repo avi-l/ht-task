@@ -74,8 +74,9 @@ app.put("/api/houses/:id", async (req: Request, res: Response) => {
 // fetch houses using pagination
 app.get("/api/fetchHouses", async (req: Request, res: Response) => {
   try {
+    // for future implementation of an infinite scroll or pagination if we want
     const offset = Number(req.query.offset) || 0; // Get the offset from query parameter, default to 0
-    const limit = Number(req.query.limit) || 100; // Get the limit from query parameter, default to 10
+    const limit = Number(req.query.limit) || 100; // Get the limit from query parameter, default to 100
 
     const houses = await House.findAll({
       offset,
