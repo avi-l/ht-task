@@ -1,15 +1,15 @@
-= Sample House Valuation Webapp =
+# Sample House Valuation Webapp
 
 This guide provides step-by-step instructions on how to set up and run the web app locally.
 
-== Prerequisites ==
+#### == Prerequisites ==
 
 Make sure you have the following software installed on your machine:
 
 - Node.js
 - npm (Node Package Manager)
 
-== Installation ==
+#### == Installation and Running App ==
 
 1. Clone the repository from GitHub:
 
