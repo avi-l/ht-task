@@ -1,5 +1,10 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import {HousesState, ModalState, housesReducer, modalReducer} from './reducers';
+import { combineReducers } from "@reduxjs/toolkit";
+import {
+  HousesState,
+  ModalState,
+  housesReducer,
+  modalReducer,
+} from "./reducers";
 
 export interface RootState {
   houses: HousesState;
@@ -13,4 +18,3 @@ const rootReducer = combineReducers({
 
 // export type RootState = ReturnType<typeof rootReducer>;
 export default rootReducer;
-

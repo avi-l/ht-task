@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import Modal from 'react-bootstrap/Modal';
-import { RootState } from '../dux/rootReducer';
-import HouseForm from './HouseForm';
-import { toggleModalAction } from '../dux/reducers';
+import Modal from "react-bootstrap/Modal";
+import { RootState } from "../dux/rootReducer";
+import HouseAddForm from "./HouseAddForm";
+import { toggleModalAction } from "../dux/reducers";
 
 const AddHouseModal: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,10 +16,12 @@ const AddHouseModal: React.FC = () => {
 
   return (
     <div>
-      <Modal show={isOpen} onHide={handleClose}>
-        <Modal.Body>
-          <HouseForm />
-        </Modal.Body>
+      <Modal show={isOpen} onHide={handleClose} centered>
+        <div className="bg-zinc-800 rounded-md text-yellow-600">
+          <Modal.Body>
+            <HouseAddForm />
+          </Modal.Body>
+        </div>
       </Modal>
     </div>
   );
