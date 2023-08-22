@@ -51,7 +51,7 @@ const HouseCard: React.FC<HouseCardProps> = ({ house }) => {
         }),
       };
     });
-  }, [editedValues.currentValue, editedValues.loanAmount, image]);
+  }, [editedValues.currentValue, editedValues.loanAmount]);
 
   const handleDelete = async () => {
     try {
